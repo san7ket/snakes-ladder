@@ -49,6 +49,12 @@ class snakesladder:
         return pos
 
     def check_status(self, pos, turn):
+        """Checks if the game has been won
+
+        :param pos : Current position of the player
+        :param turn: Current turn the player is at
+        :return boolean : if player wins returns true
+        """
         if pos >= 100:
             print(f"You win on {turn} turns. Congratulations")
             return True
@@ -74,7 +80,9 @@ class snakesladder:
 
 
 if __name__ == "__main__":
+    # Snakes dict, maps snakes head to tail
     snakes = {14: 7, 23: 17, 45: 5, 51: 33, 99: 24}
-
+    # ladder dict, maps to bottom to top of a ladder
     ladder = {8: 29, 22: 61, 54: 68, 66: 97, 72: 93}
+    # Creates the object and starts the game
     snakesladder = snakesladder(snakes, ladder)
