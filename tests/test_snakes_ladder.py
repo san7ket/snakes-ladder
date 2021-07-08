@@ -32,12 +32,10 @@ def test_ladder(mocker, ladder_entry):
     assert position == ladder.get(ladder_entry)
 
 
-@pytest.mark.parametrize("crook,", [True, False])
+@pytest.mark.parametrize("crook", [True, False])
 def test_core_logic(mocker, crook):
     mocker.patch('builtins.input', mocker.mock_open(read_data="apple"))
-    assert game.snakesladder(snakes, ladder).run(crook) < 100
-    if crook is True:
-        assert (game.snakesladder(snakes, ladder).run(crook) % 2) == 1
+    assert game.snakesladder(snakes, ladder).run(crook) <= 100
 
 
 @pytest.mark.parametrize("pos", range(90, 105))

@@ -77,7 +77,9 @@ class snakesladder:
             pos = final_pos
             print("\n")
             if self.check_status(pos, i):
-                exit()
+                # reset the position to 100 if it is above 100
+                pos = 100
+                break
         return pos
 
 
