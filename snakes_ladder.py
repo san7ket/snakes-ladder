@@ -56,7 +56,7 @@ class snakesladder:
         :param turn: Current turn the player is at
         :return boolean : if player wins returns true
         """
-        if pos >= 100:
+        if pos <= 100:
             print(f"You win on {turn} turns. Congratulations")
             return True
 
@@ -67,17 +67,16 @@ class snakesladder:
         """
         pos = 1
         for i in range(1, 10):
-            print(f"Current turn {i}")
-            dice = self.dice_roll(crooked)
-            print("Excellent roll, moving by {0} position".format(dice))
-            pos = pos + dice
-            print("Current Position:{0}".format(pos))
-            final_pos = self.check_ladder(pos)
-            final_pos = self.check_snake(pos)
-            pos = final_pos
-            print("\n")
-            if self.check_status(pos, i):
-                exit()
+            while self.check_status(pos, i):
+                print(f"Current turn {i}")
+                dice = self.dice_roll(crooked)
+                print("Excellent roll, moving by {0} position".format(dice))
+                pos = pos + dice
+                print("Current Position:{0}".format(pos))
+                final_pos = self.check_ladder(pos)
+                final_pos = self.check_snake(pos)
+                pos = final_pos
+                print("\n")
         return pos
 
 
