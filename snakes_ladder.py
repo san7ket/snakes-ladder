@@ -8,12 +8,13 @@ class snakesladder:
         """Initilize the game with snakes and ladder mapping"""
         self.snakes = snakes
         self.ladder = ladder
+        crooked = False
         self.player_name = input("***Enter your name***\n")
         self.crooked = input("Run with a crooked dice. Y/N\n") or False
         if self.crooked == "Y":
             crooked = True
         print("Welcome to Snakes And Ladders {0}".format(self.player_name))
-        self.run(self.crooked)
+        self.run(crooked)
 
     def dice_roll(self, crooked):
         """Returns the rolled dice. Crooked or normal
@@ -75,7 +76,8 @@ class snakesladder:
             final_pos = self.check_snake(pos)
             pos = final_pos
             print("\n")
-            self.check_status(pos, i)
+            if self.check_status(pos, i):
+                exit()
         return pos
 
 
